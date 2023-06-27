@@ -111,7 +111,7 @@ export default class luno extends Exchange {
                         'listorders': 1,
                         'listtrades': 1,
                         'orders/{id}': 1,
-                        'quotes/{id}': 1,
+                        'send_fee': 1,
                         'withdrawals': 1,
                         'withdrawals/{id}': 1,
                         'transfers': 1,
@@ -128,15 +128,12 @@ export default class luno extends Exchange {
                         'funding_address': 1,
                         'withdrawals': 1,
                         'send': 1,
-                        'quotes': 1,
                         'oauth2/grant': 1,
                     },
                     'put': {
                         'accounts/{id}/name': 1,
-                        'quotes/{id}': 1,
                     },
                     'delete': {
-                        'quotes/{id}': 1,
                         'withdrawals/{id}': 1,
                     },
                 },
@@ -145,8 +142,9 @@ export default class luno extends Exchange {
                 'trading': {
                     'tierBased': true, // based on volume from your primary currency (not the same for everyone)
                     'percentage': true,
-                    'taker': this.parseNumber ('0.001'),
-                    'maker': this.parseNumber ('0'),
+                    // Default values differ per counter. Below is for South Africa
+                    'taker': this.parseNumber ('0.006'),
+                    'maker': this.parseNumber ('0.004'),
                 },
             },
             'precisionMode': TICK_SIZE,
